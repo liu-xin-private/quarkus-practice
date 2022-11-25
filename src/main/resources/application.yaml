@@ -1,0 +1,14 @@
+# YAML支持注释
+quarkus:
+  hibernate-orm:
+    sql-load-script: import.sql
+    log:
+      sql: true
+    database:
+      generation: drop-and-create
+  datasource:
+    db-kind: mysql
+    username: lcp_settle
+    password: lcp_settle
+    jdbc:
+      url: jdbc:mysql://192.168.3.229:3306/panache_db
