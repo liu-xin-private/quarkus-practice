@@ -1,70 +1,35 @@
 plugins {
     id 'java'
-    id 'io.quarkus'
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
+allprojects {
+    group 'org.acme'
+    version '1.0.1-SNAPSHOT'
 }
 
-dependencies {
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-arc'
-//    implementation 'io.quarkus:quarkus-resteasy'
-//    implementation 'io.quarkus:quarkus-resteasy-jackson'
-    implementation 'io.quarkus:quarkus-resteasy-reactive'
-    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
-    implementation("io.quarkus:quarkus-config-yaml")
-    implementation('org.assertj:assertj-core:3.23.1')
+subprojects {
+    apply plugin: "java"
 
-    //compatible spring boot suntax
-//    implementation 'io.quarkus:quarkus-spring-web'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
 
-    //gRPC
-    implementation("io.quarkus:quarkus-grpc")
-    implementation 'io.quarkus:quarkus-arc'
-    implementation 'org.awaitility:awaitility'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
+    test {
+        systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+    }
 
-    implementation("io.quarkus:quarkus-jdbc-mysql")
-    implementation("io.quarkus:quarkus-hibernate-orm")
-    implementation("io.quarkus:quarkus-hibernate-validator")
-    implementation("io.quarkus:quarkus-agroal")
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.compilerArgs << '-parameters'
+    }
 
-    // compatible spring jpa
-//    implementation 'io.quarkus:quarkus-spring-data-jpa'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
-
-    // Mapstruct
-    compileOnly "org.mapstruct:mapstruct:${mapSturctVersion}"
-    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapStructBindingVersion}"
-    annotationProcessor "org.mapstruct:mapstruct-processor:${mapSturctVersion}"
-
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-
-    testCompileOnly 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-}
-
-group 'org.acme'
-version '1.0.0-SNAPSHOT'
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-test {
-    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
-}
-compileJava {
-    options.encoding = 'UTF-8'
-    options.compilerArgs << '-parameters'
-}
-
-compileTestJava {
-    options.encoding = 'UTF-8'
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
 }

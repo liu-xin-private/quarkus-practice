@@ -1,0 +1,15 @@
+quarkus:
+  http:
+    port: 8801
+  hibernate-orm:
+    sql-load-script: import.sql
+    log:
+      sql: true
+    database:
+      generation: drop-and-create
+  datasource:
+    db-kind: mysql
+    username: lcp_settle
+    password: lcp_settle
+    jdbc:
+      url: jdbc:mysql://localhost:3306/panache_db

@@ -1,0 +1,6 @@
+quarkus:
+  http:
+    port: 8802
+kafka:
+  bootstrap:
+    servers: localhost:9092

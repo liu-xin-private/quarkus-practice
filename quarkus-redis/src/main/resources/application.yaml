@@ -1,0 +1,6 @@
+quarkus:
+  http:
+    port: 8801
+  redis:
+    host: redis://localhost:6379
+    password: testpw

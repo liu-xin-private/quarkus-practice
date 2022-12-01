@@ -1,0 +1,14 @@
+quarkus:
+  http:
+    port: 8801
+kafka:
+  bootstrap:
+    servers: localhost:9092
+mp:
+  messaging:
+    incoming:
+      requests:
+        topic: quote-requests
+        auto:
+          offset:
+            reset: earliest

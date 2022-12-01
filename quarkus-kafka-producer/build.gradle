@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+dependencies {
+    implementation(project(":common"))
+
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+
+    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
+    implementation("io.quarkus:quarkus-config-yaml")
+    implementation('org.assertj:assertj-core:3.23.1')
+    implementation 'io.quarkus:quarkus-arc'
+
+
+    //kafka
+    implementation("io.quarkus:quarkus-smallrye-reactive-messaging-kafka")
+    implementation("io.quarkus:quarkus-smallrye-health")
+    implementation("org.jboss.resteasy:resteasy-client")
+
+    // compatible spring jpa
+//    implementation 'io.quarkus:quarkus-spring-data-jpa'
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}

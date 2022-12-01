@@ -1,0 +1,26 @@
+
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+
+dependencies {
+    implementation(project(":common"))
+
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
+    implementation("io.quarkus:quarkus-config-yaml")
+    implementation('org.assertj:assertj-core:3.23.1')
+    implementation 'io.quarkus:quarkus-arc'
+
+    //gprc
+    implementation("io.quarkus:quarkus-grpc")
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'org.awaitility:awaitility'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+

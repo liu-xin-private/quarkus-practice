@@ -6,6 +6,17 @@ pluginManagement {
     }
     plugins {
         id "${quarkusPluginId}" version "${quarkusPluginVersion}"
+        id "java"
+        id 'io.quarkus'
     }
 }
-rootProject.name='getting-started'
+rootProject.name='redis-quickstart'
+
+include 'common'
+include 'quarkus-grpc'
+include 'quarkus-rest-api'
+include 'quarkus-redis'
+include 'quarkus-kafka-processor'
+include 'quarkus-kafka-producer'
+include 'quarkus-rest-api-kubernetes'
+
