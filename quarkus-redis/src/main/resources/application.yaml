@@ -1,6 +1,9 @@
 quarkus:
   http:
+#    host: localhost
     port: 8801
   redis:
-    host: redis://localhost:6379
+    hosts: redis://localhost:6379
     password: testpw
+#    devservices:
+#      enabled: false

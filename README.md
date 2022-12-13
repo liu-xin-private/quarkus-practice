@@ -33,3 +33,18 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./build/quarkus-gradle-idea-multi-module-my-version-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling#building-a-native-executable.
+
+
+## build command
+
+./gradlew :quarkus-rest-api:build -Dquarkus.package.type=uber-jar
+
+gradle :quarkus-rest-api:build -Dquarkus.package.type=native -Dquarkus.native.container-build=true  -Dquarkus.native.container-runtime=docker
+
+kubectl apply -f build/kubernetes/kubernetes.yml -n=quarkus
+
+docker build -f src/main/docker/Dockerfile.native -t quarkus/getting-started
+
+docker tag quarkus/getting-started karta1659091/quarkus:v1
+
+docker push karta1659091/quarkus:v1

@@ -13,3 +13,19 @@ quarkus:
     password: lcp_settle
     jdbc:
       url: jdbc:mysql://localhost:3306/panache_db
+  container-image:
+    name: karta1659091/quarkus
+    tag: v1
+#    registry: 'test'
+  kubernetes:
+#    deployment-target: knative
+    name: quarkus-api
+#    add-version-to-label-selectors: false
+    namespace: quarkus
+    env:
+      vars:
+        example-hello: hello
+  knative:
+    name: quarkus-api
+    namespace: quarkus
+
