@@ -19,4 +19,5 @@ include 'quarkus-redis'
 include 'quarkus-kafka-processor'
 include 'quarkus-kafka-producer'
 include 'quarkus-rest-api-kubernetes'
+include 'quarkus-reactive-api'
 

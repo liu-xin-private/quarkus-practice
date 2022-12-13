@@ -4,27 +4,21 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor("io.quarkus:quarkus-panache-common")
     implementation(project(":common"))
 
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
 
-//    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-reactive'
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation("io.quarkus:quarkus-config-yaml")
-    implementation('org.assertj:assertj-core:3.23.1')
-    implementation 'io.quarkus:quarkus-arc'
+    implementation('org.assertj:assertj-core:3.22.0')
 
-    //compatible spring boot syntax
-//    implementation 'io.quarkus:quarkus-spring-web'
-
-    implementation("io.quarkus:quarkus-jdbc-mysql")
-    implementation("io.quarkus:quarkus-hibernate-orm-panache")
-//    implementation("io.quarkus:quarkus-hibernate-validator")
-    implementation("io.quarkus:quarkus-agroal")
+    implementation("io.quarkus:quarkus-hibernate-reactive-panache")
+    implementation("io.quarkus:quarkus-reactive-mysql-client")
 
     // compatible spring jpa
 //    implementation 'io.quarkus:quarkus-spring-data-jpa'
-    //implementation("io.quarkus:quarkus-spring-di")
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }
